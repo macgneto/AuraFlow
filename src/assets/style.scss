@@ -1,0 +1,440 @@
+//@import '@/assets/layout/layout.scss';
+
+
+/* Primary and Surface Palettes */
+:root {
+  /* Primary Blue Colors */
+  --p-primary-50: #eff6ff;
+  --p-primary-100: #dbeafe;
+  --p-primary-200: #bfdbfe;
+  --p-primary-300: #93c5fd;
+  --p-primary-400: #60a5fa;
+  --p-primary-500: #3b82f6; /* Main blue */
+  --p-primary-600: #2563eb;
+  --p-primary-700: #1d4ed8;
+  --p-primary-800: #1e40af;
+  --p-primary-900: #1e3a8a;
+  --p-primary-950: #172554;
+
+  /* Surface Colors */
+  --p-surface-0: #ffffff;
+  --p-surface-50: #fafafa;
+  --p-surface-100: #f4f4f5;
+  --p-surface-200: #e4e4e7;
+  --p-surface-300: #d4d4d8;
+  --p-surface-400: #a1a1aa;
+  --p-surface-500: #71717a;
+  --p-surface-600: #52525b;
+  --p-surface-700: #3f3f46;
+  --p-surface-800: #27272a;
+  --p-surface-900: #18181b;
+  --p-surface-950: #09090b;
+
+  /* Additional Styling */
+  --p-content-border-radius: 6px;
+}
+
+/* Light Mode Colors */
+:root {
+  --p-primary-color: var(--p-primary-500);
+  --p-primary-contrast-color: var(--p-surface-0);
+  --p-primary-hover-color: var(--p-primary-600);
+  --p-primary-active-color: var(--p-primary-700);
+  --p-content-border-color: var(--p-surface-200);
+  --p-content-hover-background: var(--p-surface-100);
+  --p-content-hover-color: var(--p-surface-800);
+  --p-highlight-background: var(--p-primary-50);
+  --p-highlight-color: var(--p-primary-700);
+  --p-text-color: var(--p-surface-700);
+  --p-text-muted-color: var(--p-surface-500);
+  --primary-hover-color: var(--p-primary-600);
+}
+
+/* Dark Mode Colors */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --p-primary-color: var(--p-primary-400);
+    --p-primary-contrast-color: var(--p-surface-900);
+    --p-primary-hover-color: var(--p-primary-300);
+    --p-primary-active-color: var(--p-primary-200);
+    --p-content-border-color: var(--p-surface-700);
+    --p-content-hover-background: var(--p-surface-800);
+    --p-content-hover-color: var(--p-surface-0);
+    --p-highlight-background: rgba(var(--p-primary-400), 0.84);
+    --p-highlight-color: rgba(255, 255, 255, 0.87);
+    --p-text-color: var(--p-surface-0);
+    --p-text-muted-color: var(--p-surface-400);
+  }
+}
+
+/* Variables and Theme Colors */
+$primary-50: #eff6ff;
+$primary-100: #dbeafe;
+$primary-500: #3b82f6; /* Main blue */
+$primary-700: #1d4ed8;
+
+$surface-0: #ffffff;
+$surface-100: #f4f4f5;
+$surface-800: #27272a;
+$surface-900: #18181b;
+
+/* Global Variables */
+$primary-color: #3b82f6;
+$sidebar-width: 140px;
+$radius: 20px;
+$color-white: #ffffff;
+
+/* Root variables */
+:root {
+  --primary-color: #{$primary-color};
+  --surface-bg: #f4f4f5;
+  --text-color: #ffffff;
+}
+
+
+
+
+
+
+
+:root {
+  --background-gradient:
+          radial-gradient(
+                          circle at left bottom,
+                          #b43fd3,
+                          rgba(180, 63, 211, 0.4) 20%,
+                          transparent 80%
+          ),
+          radial-gradient(
+                          circle at top left,
+                          #8530d7,
+                          rgba(133, 48, 215, 0.4) 50%,
+                          transparent 80%
+          ),
+          radial-gradient(
+                          circle at center bottom,
+                          #6f0ca9,
+                          rgba(88, 12, 169, 0.6) 60%,
+                          transparent 80%
+          ),
+          radial-gradient(
+                          circle at right top,
+                          #3a0975,
+                          rgba(58, 9, 117, 0.4) 40%,
+                          transparent 80%
+          ),
+          radial-gradient(
+                          circle at left top,
+                          #3a0975,
+                          rgba(58, 9, 117, 0.4) 20%,
+                          transparent 30%
+          ),
+            /* New central layer for added depth */
+          radial-gradient(
+                          circle at center,
+                          rgba(255, 255, 255, 0.15),
+                          transparent 70%
+          );
+}
+
+
+
+
+/* Global Reset and Body Styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  color: var(--text-color);
+  background: var(--background-gradient);
+  background-attachment: fixed;
+  //background-size: cover;
+  //background-size: 102% 102%; /* Slightly larger for a subtle movement */
+  animation: colorShift 3s linear infinite; /* Slow, smooth transition */
+}
+
+/* Smooth Background Color Shift Animation */
+@keyframes colorShift {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 10% 10%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Header */
+.header {
+  background-color: transparent;
+  color: #ffffff;
+  padding: 1rem;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+
+/* Layout Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Main Content Area */
+.main-content {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+
+main {
+  height: calc(100vh - 124px);
+}
+
+
+/* Sidebar Styles */
+//aside {
+//    width: $sidebar-width;
+//    height:calc(100vh - 124px);
+//
+//}
+
+
+.sidebar {
+  width: $sidebar-width;
+  background-color: transparent;
+  padding: 1rem;
+  overflow-y: auto;
+  flex-shrink: 0;
+  justify-items: center;
+  height: calc(100vh - 124px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative; /* Required for positioning the pseudo-element */
+
+  /* Pseudo-element for vertical border */
+  &::before {
+    content: '';
+    position: absolute;
+    right: 0; /* Position on the right side */
+    top: 25%; /* Start 25% from the top to center it vertically */
+    height: 50%; /* Occupy only 50% of the height */
+    width: 1px; /* Set the thickness of the border */
+    background: linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(255, 255, 255, 0.2),
+                    transparent
+    ); /* Fade effect */
+  }
+}
+
+.sidebar .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.sidebar .menu-item {
+  padding: 20px;
+  color: var(--text-color);
+  text-decoration: none;
+  display: flex;
+  border-radius: $radius;
+  border: 1px solid transparent;
+  transition: background-color 0.3s;
+}
+
+.sidebar .menu-item:hover {
+  background-color: #ffffff09;
+  border-radius: $radius;
+  border: 1px solid #ffffff22;
+  transition: background-color 0.3s;
+}
+
+/* Reusable Color Classes */
+.color-white .icon {
+  color: #ffffff;
+}
+
+/* Default and Hover Colors */
+.color-blue .icon {
+  color: #3498db;
+}
+.hover-blue:hover .icon, .menu-item.active.hover-blue .icon {
+  color: #2980b9;
+}
+
+.color-red .icon {
+  color: #e74c3c;
+}
+.hover-red:hover .icon, .menu-item.active.hover-red .icon {
+  color: #c0392b;
+}
+
+.color-green .icon {
+  color: #2ecc71;
+}
+.hover-green:hover .icon, .menu-item.active.hover-green .icon {
+  color: #27ae60;
+}
+
+.color-yellow .icon {
+  color: #f1c40f;
+}
+.hover-yellow:hover .icon, .menu-item.active.hover-yellow .icon {
+  color: #f39c12;
+}
+
+/* Active State Background and Border */
+.menu-item.active {
+  //background-color: #ffffff09;
+  //border-radius: $radius;
+  //border: 1px solid #ffffff22;
+  //transition: background-color 0.3s;
+  background-color: #ffffff09;
+  border-radius: $radius;
+  border: 1px solid #ffffff66;
+  transition: background-color 0.3s, box-shadow 0.3s;
+  //box-shadow: inset 0 0 6px 0px #ffffff33;
+}
+
+
+.hover-blue {
+  --active-shadow-color: #2980b9;
+}
+
+.hover-red {
+  --active-shadow-color: #c0392b;
+}
+
+.hover-green {
+  --active-shadow-color: #27ae60;
+}
+
+.hover-yellow {
+  --active-shadow-color: #f39c12;
+}
+
+
+/* Content */
+.content {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* Footer */
+.footer {
+  background-color: var(--surface-bg);
+  color: var(--text-color);
+  text-align: center;
+  padding: 1rem;
+  width: 100%;
+  flex-shrink: 0;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+//text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 rounded
+
+
+.nav-item {
+
+  padding: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  color: white;
+  transition: background-color 0.3s;
+
+}
+
+.nav-item:hover {
+  border: 1px solid #ffffff33;
+  border-radius: 15px;
+  padding: 10px;
+  color: var(--text-color);
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+
+
+
+
+
+
+//DASHBOARD CARDS
+
+.card {
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: 300px; /* Set width as needed */
+}
+
+.card-content {
+  position: relative;
+  z-index: 1; /* Ensure content stays above the background icon */
+}
+
+/* Background Icon (Top Right) */
+.card-bg-icon {
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 8rem; /* Adjust size as needed */
+  color: rgba(255, 255, 255, 0.15); /* Faint color to act as a background */
+  transform: rotate(20deg) skewY(-10deg); /* Perspective effect */
+  z-index: 0;
+  text-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2); /* Large shadow effect */
+}
+
+/* Title Styling */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+/* Centered Content Styling */
+.card-center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  color: inherit; /* Inherits color set by slot content */
+}
+
+/* Footer Styling */
+.card-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.7);
+}
